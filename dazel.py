@@ -403,8 +403,8 @@ class DockerInstance:
               real_user_output_path = os.path.realpath(
                   os.path.join(self.bazel_output_base,
                                user_output_path))
-              if not os.path.isdir(real_user_output_path):
-                  os.makedirs(real_user_output_path)
+              # if not os.path.isdir(real_user_output_path):
+              #     os.makedirs(real_user_output_path)
               volumes += ["%s:%s%s" % (real_user_output_path,
                                        real_user_output_path,
                                        self.delegated_volume_flag)]
@@ -413,8 +413,8 @@ class DockerInstance:
             self.bazel_output_base = real_bazelout
 
         # Make sure the path exists on the host.
-        if self.bazel_user_output_root and not os.path.isdir(self.bazel_user_output_root):
-            os.makedirs(self.bazel_user_output_root)
+        # if self.bazel_user_output_root and not os.path.isdir(self.bazel_user_output_root):
+        #     os.makedirs(self.bazel_user_output_root)
 
         # Calculate the volumes string.
         self.volumes = '-v "%s"' % '" -v "'.join(volumes)
